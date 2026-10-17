@@ -1,0 +1,19 @@
+# Segmentation / anomaly-localization config (MVTec AD)
+# NOTE: MVTec AD is CC BY-NC-SA 4.0 (non-commercial). Do NOT bundle images in the repo.
+seed: 42
+mvtec_root: data/mvtec
+category: grid        # pick one category with normal-only training data
+
+# Track A (benchmark-compatible, recommended): normal-only anomaly localization
+anomaly:
+  method: patchcore   # placeholder; implemented in Step 6
+  image_size: 256
+
+# Track B (educational U-Net, explicitly NONSTANDARD supervised split)
+unet:
+  image_size: 256
+  batch_size: 8
+  epochs: 50
+  lr: 1.0e-3
+  bce_weight: 1.0
+  dice_weight: 1.0

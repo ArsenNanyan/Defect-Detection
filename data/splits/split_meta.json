@@ -1,0 +1,48 @@
+{
+  "seed": 42,
+  "dhash_threshold": 4,
+  "split_fractions": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "totals": {
+    "train": 1252,
+    "val": 270,
+    "test": 278
+  },
+  "per_class": {
+    "crazing": {
+      "train": 204,
+      "val": 47,
+      "test": 49
+    },
+    "inclusion": {
+      "train": 206,
+      "val": 45,
+      "test": 49
+    },
+    "patches": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "pitted_surface": {
+      "train": 212,
+      "val": 43,
+      "test": 45
+    },
+    "rolled-in_scale": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    },
+    "scratches": {
+      "train": 210,
+      "val": 45,
+      "test": 45
+    }
+  },
+  "n_near_duplicate_groups": 1560,
+  "n_multi_image_groups": 42
+}

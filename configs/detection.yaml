@@ -1,0 +1,11 @@
+# YOLO26 detection config (NEU-DET)
+# Tuned for an RTX 3050 6GB laptop GPU.
+seed: 42
+model: yolo26n.pt
+data_yaml: data/processed/neu_det/neu_det.yaml
+epochs: 80
+imgsz: 512          # 200x200 source; 512 is a memory-friendly workable size
+batch: 8            # fits 6 GB VRAM; raise if you have headroom
+project: runs/detect
+name: yolo26n_neu
+patience: 20

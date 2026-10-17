@@ -1,0 +1,23 @@
+# Classification experiment config (NEU-DET, 6 classes)
+seed: 42
+num_classes: 6
+class_names: [crazing, inclusion, patches, pitted_surface, rolled-in_scale, scratches]
+
+data:
+  splits_dir: data/splits
+  image_size: 224
+
+train:
+  epochs: 20
+  batch_size: 32
+  lr_scratch: 1.0e-3
+  lr_finetune: 1.0e-4
+  weight_decay: 1.0e-2
+  num_workers: 4
+  early_stopping_patience: 6
+  device: auto            # auto -> cuda if available else cpu
+
+# Which backbone to run: custom_cnn | resnet18 | resnet50 | efficientnet_b0
+model: resnet18
+# Transfer-learning mode for torchvision backbones: frozen | finetune_last | full
+transfer_mode: full

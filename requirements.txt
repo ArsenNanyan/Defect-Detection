@@ -1,0 +1,28 @@
+# NOTE: install PyTorch + torchvision separately for your platform/CUDA
+# from https://pytorch.org/get-started/locally/ BEFORE installing the rest.
+# This project was developed against the CUDA 12.x build for an RTX 3050.
+#
+# Versions are pinned loosely; freeze exact versions after you verify the env.
+
+numpy
+pandas
+pillow
+opencv-python
+albumentations
+scikit-learn
+matplotlib
+seaborn
+pyyaml
+tqdm
+ultralytics
+onnx
+onnxruntime
+fastapi
+uvicorn
+python-multipart
+streamlit
+requests
+pydantic
+pytest
+ruff
+mlflow
