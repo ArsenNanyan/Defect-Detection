@@ -1,0 +1,49 @@
+{
+  "checkpoint": "artifacts\\checkpoints\\resnet50_full_best.pt",
+  "split": "val",
+  "model": "resnet50",
+  "transfer_mode": "full",
+  "n_samples": 270,
+  "macro_f1": 1.0,
+  "balanced_accuracy": 1.0,
+  "auroc_ovr_macro": 1.0,
+  "per_class": {
+    "crazing": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 47.0
+    },
+    "inclusion": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 45.0
+    },
+    "patches": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 45.0
+    },
+    "pitted_surface": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 43.0
+    },
+    "rolled-in_scale": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 45.0
+    },
+    "scratches": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 45.0
+    }
+  },
+  "device": "cuda"
+}

@@ -1,0 +1,11 @@
+run,model,transfer_mode,params_M,ckpt_size_MB,train_minutes,val_macro_f1,val_balanced_acc,val_auroc_ovr,device
+efficientnet_b0_full,efficientnet_b0,full,4.015,16.37,4.37,1.0,1.0,1.0,cuda
+resnet50_finetune_last,resnet50,finetune_last,23.52,94.41,3.61,1.0,1.0,1.0,cuda
+efficientnet_b0_finetune_last,efficientnet_b0,finetune_last,4.015,16.37,4.97,1.0,1.0,1.0,cuda
+resnet50_full,resnet50,full,23.52,94.4,4.58,1.0,1.0,1.0,cuda
+resnet18_finetune_last,resnet18,finetune_last,11.18,44.8,2.25,0.9963,0.9963,1.0,cuda
+resnet18_full,resnet18,full,11.18,44.8,2.83,0.9963,0.9963,0.9999,cuda
+efficientnet_b0_frozen,efficientnet_b0,frozen,4.015,16.37,6.08,0.9853,0.9852,0.9992,cuda
+resnet50_frozen,resnet50,frozen,23.52,94.4,5.95,0.9704,0.9704,0.9986,cuda
+custom_cnn,custom_cnn,n/a,0.094,0.39,3.74,0.9594,0.9589,0.9989,cuda
+resnet18_frozen,resnet18,frozen,11.18,44.8,4.94,0.9261,0.9256,0.9922,cuda

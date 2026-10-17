@@ -1,0 +1,49 @@
+{
+  "checkpoint": "artifacts\\checkpoints\\efficientnet_b0_frozen_best.pt",
+  "split": "val",
+  "model": "efficientnet_b0",
+  "transfer_mode": "frozen",
+  "n_samples": 270,
+  "macro_f1": 0.9853,
+  "balanced_accuracy": 0.9852,
+  "auroc_ovr_macro": 0.9992,
+  "per_class": {
+    "crazing": {
+      "precision": 0.9791666666666666,
+      "recall": 1.0,
+      "f1-score": 0.9894736842105263,
+      "support": 47.0
+    },
+    "inclusion": {
+      "precision": 1.0,
+      "recall": 0.9555555555555556,
+      "f1-score": 0.9772727272727273,
+      "support": 45.0
+    },
+    "patches": {
+      "precision": 1.0,
+      "recall": 0.9777777777777777,
+      "f1-score": 0.9887640449438202,
+      "support": 45.0
+    },
+    "pitted_surface": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 43.0
+    },
+    "rolled-in_scale": {
+      "precision": 0.9782608695652174,
+      "recall": 1.0,
+      "f1-score": 0.989010989010989,
+      "support": 45.0
+    },
+    "scratches": {
+      "precision": 0.9565217391304348,
+      "recall": 0.9777777777777777,
+      "f1-score": 0.967032967032967,
+      "support": 45.0
+    }
+  },
+  "device": "cuda"
+}

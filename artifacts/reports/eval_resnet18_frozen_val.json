@@ -1,0 +1,49 @@
+{
+  "checkpoint": "artifacts\\checkpoints\\resnet18_frozen_best.pt",
+  "split": "val",
+  "model": "resnet18",
+  "transfer_mode": "frozen",
+  "n_samples": 270,
+  "macro_f1": 0.9261,
+  "balanced_accuracy": 0.9256,
+  "auroc_ovr_macro": 0.9922,
+  "per_class": {
+    "crazing": {
+      "precision": 0.8846153846153846,
+      "recall": 0.9787234042553191,
+      "f1-score": 0.9292929292929293,
+      "support": 47.0
+    },
+    "inclusion": {
+      "precision": 0.8541666666666666,
+      "recall": 0.9111111111111111,
+      "f1-score": 0.8817204301075269,
+      "support": 45.0
+    },
+    "patches": {
+      "precision": 0.9772727272727273,
+      "recall": 0.9555555555555556,
+      "f1-score": 0.9662921348314607,
+      "support": 45.0
+    },
+    "pitted_surface": {
+      "precision": 0.975609756097561,
+      "recall": 0.9302325581395349,
+      "f1-score": 0.9523809523809523,
+      "support": 43.0
+    },
+    "rolled-in_scale": {
+      "precision": 0.9772727272727273,
+      "recall": 0.9555555555555556,
+      "f1-score": 0.9662921348314607,
+      "support": 45.0
+    },
+    "scratches": {
+      "precision": 0.9024390243902439,
+      "recall": 0.8222222222222222,
+      "f1-score": 0.8604651162790697,
+      "support": 45.0
+    }
+  },
+  "device": "cuda"
+}

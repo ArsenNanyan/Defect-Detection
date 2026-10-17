@@ -1,0 +1,122 @@
+[
+  {
+    "run": "efficientnet_b0_full",
+    "model": "efficientnet_b0",
+    "transfer_mode": "full",
+    "params_M": 4.015,
+    "ckpt_size_MB": 16.37,
+    "train_minutes": 4.37,
+    "val_macro_f1": 1.0,
+    "val_balanced_acc": 1.0,
+    "val_auroc_ovr": 1.0,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet50_finetune_last",
+    "model": "resnet50",
+    "transfer_mode": "finetune_last",
+    "params_M": 23.52,
+    "ckpt_size_MB": 94.41,
+    "train_minutes": 3.61,
+    "val_macro_f1": 1.0,
+    "val_balanced_acc": 1.0,
+    "val_auroc_ovr": 1.0,
+    "device": "cuda"
+  },
+  {
+    "run": "efficientnet_b0_finetune_last",
+    "model": "efficientnet_b0",
+    "transfer_mode": "finetune_last",
+    "params_M": 4.015,
+    "ckpt_size_MB": 16.37,
+    "train_minutes": 4.97,
+    "val_macro_f1": 1.0,
+    "val_balanced_acc": 1.0,
+    "val_auroc_ovr": 1.0,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet50_full",
+    "model": "resnet50",
+    "transfer_mode": "full",
+    "params_M": 23.52,
+    "ckpt_size_MB": 94.4,
+    "train_minutes": 4.58,
+    "val_macro_f1": 1.0,
+    "val_balanced_acc": 1.0,
+    "val_auroc_ovr": 1.0,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet18_finetune_last",
+    "model": "resnet18",
+    "transfer_mode": "finetune_last",
+    "params_M": 11.18,
+    "ckpt_size_MB": 44.8,
+    "train_minutes": 2.25,
+    "val_macro_f1": 0.9963,
+    "val_balanced_acc": 0.9963,
+    "val_auroc_ovr": 1.0,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet18_full",
+    "model": "resnet18",
+    "transfer_mode": "full",
+    "params_M": 11.18,
+    "ckpt_size_MB": 44.8,
+    "train_minutes": 2.83,
+    "val_macro_f1": 0.9963,
+    "val_balanced_acc": 0.9963,
+    "val_auroc_ovr": 0.9999,
+    "device": "cuda"
+  },
+  {
+    "run": "efficientnet_b0_frozen",
+    "model": "efficientnet_b0",
+    "transfer_mode": "frozen",
+    "params_M": 4.015,
+    "ckpt_size_MB": 16.37,
+    "train_minutes": 6.08,
+    "val_macro_f1": 0.9853,
+    "val_balanced_acc": 0.9852,
+    "val_auroc_ovr": 0.9992,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet50_frozen",
+    "model": "resnet50",
+    "transfer_mode": "frozen",
+    "params_M": 23.52,
+    "ckpt_size_MB": 94.4,
+    "train_minutes": 5.95,
+    "val_macro_f1": 0.9704,
+    "val_balanced_acc": 0.9704,
+    "val_auroc_ovr": 0.9986,
+    "device": "cuda"
+  },
+  {
+    "run": "custom_cnn",
+    "model": "custom_cnn",
+    "transfer_mode": "n/a",
+    "params_M": 0.094,
+    "ckpt_size_MB": 0.39,
+    "train_minutes": 3.74,
+    "val_macro_f1": 0.9594,
+    "val_balanced_acc": 0.9589,
+    "val_auroc_ovr": 0.9989,
+    "device": "cuda"
+  },
+  {
+    "run": "resnet18_frozen",
+    "model": "resnet18",
+    "transfer_mode": "frozen",
+    "params_M": 11.18,
+    "ckpt_size_MB": 44.8,
+    "train_minutes": 4.94,
+    "val_macro_f1": 0.9261,
+    "val_balanced_acc": 0.9256,
+    "val_auroc_ovr": 0.9922,
+    "device": "cuda"
+  }
+]

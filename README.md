@@ -84,7 +84,7 @@ python scripts/make_splits.py --raw data/raw/neu_det --out data/splits --seed 42
 | Step | Status |
 |---|---|
 | 1. Data audit + immutable splits | ✅ done — see [DATA_REPORT](artifacts/reports/DATA_REPORT.md) |
-| 2. Classification (CNN, ResNet, EfficientNet) | 🔨 pipeline built & GPU-validated; full experiment sweep pending |
+| 2. Classification (CNN, ResNet, EfficientNet) | ✅ done — 10-run sweep, see [CLASSIFICATION_REPORT](artifacts/reports/CLASSIFICATION_REPORT.md) |
 | 3. Feature maps / receptive field lab | ⬜ |
 | 4. VOC→YOLO conversion | ⬜ |
 | 5. YOLO26n detection | ⬜ |
