@@ -30,6 +30,9 @@ def main() -> None:
     ap.add_argument("--imgsz", type=int, default=None)
     ap.add_argument("--batch", type=int, default=None)
     ap.add_argument("--device", default=None)
+    ap.add_argument("--resume", nargs="?", const="auto", default=None,
+                    help="Resume training. Bare --resume uses the run's last.pt; "
+                         "or pass an explicit path to a last.pt.")
     args = ap.parse_args()
 
     with open(args.config, encoding="utf-8") as f:
@@ -47,20 +50,32 @@ def main() -> None:
 
     # absolute project dir avoids Ultralytics path-doubling with relative paths
     project = str(Path(cfg["project"]).resolve())
-    model = YOLO(cfg["model"])
-    model.train(
-        data=cfg["data_yaml"],
-        epochs=cfg["epochs"],
-        imgsz=cfg["imgsz"],
-        batch=cfg["batch"],
-        seed=cfg["seed"],
-        project=project,
-        name=cfg["name"],
-        patience=cfg.get("patience", 20),
-        device=device,
-        exist_ok=True,
-        plots=True,
-    )
+
+    if args.resume is not None:
+        last = (Path(project) / cfg["name"] / "weights" / "last.pt"
+                if args.resume == "auto" else Path(args.resume))
+        if not last.exists():
+            raise FileNotFoundError(f"Cannot resume: {last} not found.")
+        print(f"Resuming from {last}")
+        model = YOLO(str(last))
+        # resume=True restores optimizer state and epoch count from the checkpoint;
+        # all other training args are read back from the run's saved args.yaml.
+        model.train(resume=True)
+    else:
+        model = YOLO(cfg["model"])
+        model.train(
+            data=cfg["data_yaml"],
+            epochs=cfg["epochs"],
+            imgsz=cfg["imgsz"],
+            batch=cfg["batch"],
+            seed=cfg["seed"],
+            project=project,
+            name=cfg["name"],
+            patience=cfg.get("patience", 20),
+            device=device,
+            exist_ok=True,
+            plots=True,
+        )
 
     # use the trainer's own resolved paths (robust across Ultralytics versions)
     run_dir = Path(model.trainer.save_dir)
