@@ -86,8 +86,8 @@ python scripts/make_splits.py --raw data/raw/neu_det --out data/splits --seed 42
 | 1. Data audit + immutable splits | ✅ done — see [DATA_REPORT](artifacts/reports/DATA_REPORT.md) |
 | 2. Classification (CNN, ResNet, EfficientNet) | ✅ done — 10-run sweep, see [CLASSIFICATION_REPORT](artifacts/reports/CLASSIFICATION_REPORT.md) |
 | 3. Feature maps / receptive field lab | ⬜ |
-| 4. VOC→YOLO conversion | ⬜ |
-| 5. YOLO26n detection | ⬜ |
+| 4. VOC→YOLO conversion | ✅ done (4,189 boxes, 0 rejected, same frozen split) |
+| 5. YOLO26n detection | ✅ done — test mAP@0.5 0.782, see [DETECTION_REPORT](artifacts/reports/DETECTION_REPORT.md) |
 | 6. MVTec segmentation / anomaly | ⬜ |
 | 7. Evaluation + model selection | ⬜ |
 | 8. ONNX export + parity | ⬜ |

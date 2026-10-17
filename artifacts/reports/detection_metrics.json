@@ -1,0 +1,38 @@
+{
+  "model": "yolo26n.pt",
+  "imgsz": 512,
+  "batch": 8,
+  "epochs": 80,
+  "best_checkpoint": "C:\\Users\\alina\\Desktop\\Defect Detection\\runs\\detect\\yolo26n_neu\\weights\\best.pt",
+  "device": "0",
+  "results": {
+    "val": {
+      "map50_95": 0.4631,
+      "map50": 0.7896,
+      "precision": 0.7609,
+      "recall": 0.7216,
+      "per_class_ap50": {
+        "crazing": 0.4666,
+        "inclusion": 0.8775,
+        "patches": 0.9572,
+        "pitted_surface": 0.852,
+        "rolled-in_scale": 0.6698,
+        "scratches": 0.9145
+      }
+    },
+    "test": {
+      "map50_95": 0.4489,
+      "map50": 0.7824,
+      "precision": 0.7604,
+      "recall": 0.7342,
+      "per_class_ap50": {
+        "crazing": 0.5358,
+        "inclusion": 0.8247,
+        "patches": 0.9363,
+        "pitted_surface": 0.7766,
+        "rolled-in_scale": 0.6859,
+        "scratches": 0.935
+      }
+    }
+  }
+}
