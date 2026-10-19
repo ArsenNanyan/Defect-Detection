@@ -70,9 +70,35 @@ Verify: `python -c "import torch; print(torch.cuda.is_available(), torch.cuda.ge
 
 ```bash
 # Step 1 — audit + immutable splits
+python scripts/repair_raw.py  --raw data/raw/neu_det
 python scripts/audit_data.py  --raw data/raw/neu_det --out artifacts/reports
 python scripts/make_splits.py --raw data/raw/neu_det --out data/splits --seed 42
+
+# Step 2 — classification sweep (needs PYTHONPATH=src)
+python scripts/run_cls_sweep.py --epochs 20
+
+# Steps 4-5 — detection
+python scripts/voc_to_yolo.py --raw data/raw/neu_det --splits data/splits --out data/processed/neu_det
+python scripts/train_det.py   --config configs/detection.yaml   # --resume to continue
+
+# Step 8 — ONNX export + parity + benchmark
+python -m inspection.export_onnx --n 30
+python scripts/benchmark.py --runs 100
 ```
+
+### Run the demo (Steps 9-10)
+
+```bash
+# Terminal 1 — API (PYTHONPATH=src)
+uvicorn api.main:app --host 127.0.0.1 --port 8000
+# Terminal 2 — UI
+streamlit run ui/streamlit_app.py
+```
+
+Then open http://localhost:8501. The UI calls the API's `/predict`; set
+`INSPECTOR_API_URL` if the API is elsewhere.
+
+![Streamlit demo](artifacts/reports/figures/demo/streamlit_ui.jpg)
 
 ## Hardware used
 
@@ -91,8 +117,8 @@ python scripts/make_splits.py --raw data/raw/neu_det --out data/splits --seed 42
 | 6. MVTec segmentation / anomaly | ⬜ |
 | 7. Evaluation + model selection | ⬜ |
 | 8. ONNX export + parity | ✅ done — exact parity, 8× CPU speedup, see [ONNX_REPORT](artifacts/reports/ONNX_REPORT.md) |
-| 9. FastAPI service | ⬜ |
-| 10. Streamlit demo | ⬜ |
+| 9. FastAPI service | ✅ done — /health, /models, /predict (cls+det), 7 tests pass |
+| 10. Streamlit demo | ✅ done — uploader, boxes, latency, metrics panel |
 
 ## License & attribution notes
 
