@@ -115,7 +115,7 @@ Then open http://localhost:8501. The UI calls the API's `/predict`; set
 | 4. VOC→YOLO conversion | ✅ done (4,189 boxes, 0 rejected, same frozen split) |
 | 5. YOLO26n detection | ✅ done — test mAP@0.5 0.782, see [DETECTION_REPORT](artifacts/reports/DETECTION_REPORT.md) |
 | 6. MVTec segmentation / anomaly | ⬜ |
-| 7. Evaluation + model selection | ⬜ |
+| 7. Evaluation + model selection | ✅ done — test macro-F1 0.986 (cls) / mAP50 0.782 (det), see [EVALUATION_REPORT](artifacts/reports/EVALUATION_REPORT.md) |
 | 8. ONNX export + parity | ✅ done — exact parity, 8× CPU speedup, see [ONNX_REPORT](artifacts/reports/ONNX_REPORT.md) |
 | 9. FastAPI service | ✅ done — /health, /models, /predict (cls+det), 7 tests pass |
 | 10. Streamlit demo | ✅ done — uploader, boxes, latency, metrics panel |
