@@ -22,6 +22,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 API = os.getenv("INSPECTOR_API_URL", "http://127.0.0.1:8000")
 REPORTS = Path("artifacts/reports")
+SAMPLES_DIR = Path(__file__).parent / "samples"
 MAX_BYTES = 10_000_000
 
 # Palette for detection boxes (cycles per class label).
@@ -370,8 +371,28 @@ upload = st.file_uploader("Drag & drop a steel surface image",
                           type=["png", "jpg", "jpeg", "bmp"],
                           label_visibility="collapsed")
 
+# ---- "Try a sample" loader (uses bundled NEU-DET test images) ----
+samples = sorted(SAMPLES_DIR.glob("*.jpg")) if SAMPLES_DIR.exists() else []
+if samples:
+    st.caption("No image handy? Try a bundled sample:")
+    cols = st.columns(len(samples))
+    for col, sp in zip(cols, samples, strict=False):
+        if col.button(sp.stem.replace("_", " ").title(), use_container_width=True,
+                      key=f"sample_{sp.stem}"):
+            st.session_state["sample_name"] = sp.name
+            st.session_state["sample_bytes"] = sp.read_bytes()
+
+# ---- Resolve the image source: an upload takes precedence over a chosen sample ----
+src_name = data = mime = None
 if upload is not None:
-    data = upload.getvalue()
+    src_name, data, mime = upload.name, upload.getvalue(), (upload.type or "image/jpeg")
+    st.session_state.pop("sample_name", None)
+elif st.session_state.get("sample_name"):
+    src_name = st.session_state["sample_name"]
+    data = st.session_state["sample_bytes"]
+    mime = "image/jpeg"
+
+if data is not None:
     if len(data) > MAX_BYTES:
         st.error("Maximum upload size is 10 MB.")
     else:
@@ -390,7 +411,7 @@ if upload is not None:
                 try:
                     r = requests.post(
                         f"{API}/predict",
-                        files={"file": (upload.name, data, upload.type or "image/jpeg")},
+                        files={"file": (src_name, data, mime)},
                         data={"task": task, "conf": conf},
                         timeout=60,
                     )

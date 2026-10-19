@@ -132,9 +132,12 @@ streamlit run ui/streamlit_app.py
 ```
 
 Then open http://localhost:8501. The UI calls the API's `/predict`; set
-`INSPECTOR_API_URL` if the API is elsewhere.
+`INSPECTOR_API_URL` if the API is elsewhere. No image handy? Use the built-in **sample
+buttons**.
 
-![Streamlit demo](artifacts/reports/figures/demo/streamlit_ui.jpg)
+📖 **Step-by-step walkthrough with screenshots: [docs/USAGE.md](docs/USAGE.md)**
+
+![Detection in the Streamlit demo](docs/screenshots/03_detection.jpg)
 
 ### Segmentation (Step 6) — MVTec AD setup
 
