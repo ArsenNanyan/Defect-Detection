@@ -1,0 +1,168 @@
+{
+  "input_size": 224,
+  "custom_cnn": [
+    {
+      "layer": "conv1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 3,
+      "jump(stride_product)": 1
+    },
+    {
+      "layer": "maxpool1(2x2,s2)",
+      "kernel": 2,
+      "stride": 2,
+      "receptive_field": 4,
+      "jump(stride_product)": 2
+    },
+    {
+      "layer": "conv2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 8,
+      "jump(stride_product)": 2
+    },
+    {
+      "layer": "maxpool2(2x2,s2)",
+      "kernel": 2,
+      "stride": 2,
+      "receptive_field": 10,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "conv3(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 18,
+      "jump(stride_product)": 4
+    }
+  ],
+  "resnet18_to_layer4": [
+    {
+      "layer": "conv1(7x7,s2)",
+      "kernel": 7,
+      "stride": 2,
+      "receptive_field": 7,
+      "jump(stride_product)": 2
+    },
+    {
+      "layer": "maxpool(3x3,s2)",
+      "kernel": 3,
+      "stride": 2,
+      "receptive_field": 11,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "layer1.b1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 19,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "layer1.b1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 27,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "layer1.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 35,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "layer1.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 43,
+      "jump(stride_product)": 4
+    },
+    {
+      "layer": "layer2.b1(3x3,s2)",
+      "kernel": 3,
+      "stride": 2,
+      "receptive_field": 51,
+      "jump(stride_product)": 8
+    },
+    {
+      "layer": "layer2.b1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 67,
+      "jump(stride_product)": 8
+    },
+    {
+      "layer": "layer2.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 83,
+      "jump(stride_product)": 8
+    },
+    {
+      "layer": "layer2.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 99,
+      "jump(stride_product)": 8
+    },
+    {
+      "layer": "layer3.b1(3x3,s2)",
+      "kernel": 3,
+      "stride": 2,
+      "receptive_field": 115,
+      "jump(stride_product)": 16
+    },
+    {
+      "layer": "layer3.b1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 147,
+      "jump(stride_product)": 16
+    },
+    {
+      "layer": "layer3.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 179,
+      "jump(stride_product)": 16
+    },
+    {
+      "layer": "layer3.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 211,
+      "jump(stride_product)": 16
+    },
+    {
+      "layer": "layer4.b1(3x3,s2)",
+      "kernel": 3,
+      "stride": 2,
+      "receptive_field": 243,
+      "jump(stride_product)": 32
+    },
+    {
+      "layer": "layer4.b1(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 307,
+      "jump(stride_product)": 32
+    },
+    {
+      "layer": "layer4.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 371,
+      "jump(stride_product)": 32
+    },
+    {
+      "layer": "layer4.b2(3x3)",
+      "kernel": 3,
+      "stride": 1,
+      "receptive_field": 435,
+      "jump(stride_product)": 32
+    }
+  ]
+}

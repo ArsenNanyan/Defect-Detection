@@ -111,7 +111,7 @@ Then open http://localhost:8501. The UI calls the API's `/predict`; set
 |---|---|
 | 1. Data audit + immutable splits | ✅ done — see [DATA_REPORT](artifacts/reports/DATA_REPORT.md) |
 | 2. Classification (CNN, ResNet, EfficientNet) | ✅ done — 10-run sweep, see [CLASSIFICATION_REPORT](artifacts/reports/CLASSIFICATION_REPORT.md) |
-| 3. Feature maps / receptive field lab | ⬜ |
+| 3. Feature maps / receptive field lab | ✅ done — CNN RF 18px vs ResNet 435px, see [FEATURE_MAP_REPORT](artifacts/reports/FEATURE_MAP_REPORT.md) |
 | 4. VOC→YOLO conversion | ✅ done (4,189 boxes, 0 rejected, same frozen split) |
 | 5. YOLO26n detection | ✅ done — test mAP@0.5 0.782, see [DETECTION_REPORT](artifacts/reports/DETECTION_REPORT.md) |
 | 6. MVTec segmentation / anomaly | ⬜ |
