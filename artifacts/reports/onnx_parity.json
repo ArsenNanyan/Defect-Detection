@@ -1,0 +1,22 @@
+{
+  "classifier": {
+    "onnx": "artifacts\\checkpoints\\classifier.onnx",
+    "size_MB": 16.05,
+    "parity": {
+      "n": 30,
+      "top1_agreement": 1.0,
+      "max_abs_softmax_diff": 2e-06
+    }
+  },
+  "detector": {
+    "onnx": "artifacts\\checkpoints\\detector.onnx",
+    "size_MB": 9.8,
+    "parity": {
+      "n": 30,
+      "conf": 0.25,
+      "count_mismatches": 0,
+      "label_mismatches": 0,
+      "max_box_coord_delta_px": 0.081
+    }
+  }
+}

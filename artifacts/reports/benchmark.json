@@ -1,0 +1,42 @@
+{
+  "device": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "onnx_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "runs": 100,
+  "classifier": {
+    "preprocess": {
+      "p50_ms": 1.07,
+      "p95_ms": 1.257,
+      "fps": 934.4
+    },
+    "cpu_pytorch_infer": {
+      "p50_ms": 37.625,
+      "p95_ms": 39.059,
+      "fps": 26.6
+    },
+    "cpu_onnx_infer": {
+      "p50_ms": 4.7,
+      "p95_ms": 5.584,
+      "fps": 212.8
+    },
+    "gpu_pytorch_infer": {
+      "p50_ms": 8.634,
+      "p95_ms": 10.509,
+      "fps": 115.8
+    }
+  },
+  "detector": {
+    "cpu_pytorch_e2e": {
+      "p50_ms": 54.757,
+      "p95_ms": 57.932,
+      "fps": 18.3
+    },
+    "cpu_onnx_e2e": {
+      "p50_ms": 17.302,
+      "p95_ms": 19.614,
+      "fps": 57.8
+    }
+  }
+}

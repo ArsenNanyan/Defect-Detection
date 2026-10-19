@@ -90,7 +90,7 @@ python scripts/make_splits.py --raw data/raw/neu_det --out data/splits --seed 42
 | 5. YOLO26n detection | ✅ done — test mAP@0.5 0.782, see [DETECTION_REPORT](artifacts/reports/DETECTION_REPORT.md) |
 | 6. MVTec segmentation / anomaly | ⬜ |
 | 7. Evaluation + model selection | ⬜ |
-| 8. ONNX export + parity | ⬜ |
+| 8. ONNX export + parity | ✅ done — exact parity, 8× CPU speedup, see [ONNX_REPORT](artifacts/reports/ONNX_REPORT.md) |
 | 9. FastAPI service | ⬜ |
 | 10. Streamlit demo | ⬜ |
 
