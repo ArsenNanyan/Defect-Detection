@@ -1,0 +1,26 @@
+{
+  "category": "grid",
+  "image_size": 256,
+  "track_a_patchcore": {
+    "image_auroc": 0.9273182957393484,
+    "pixel_auroc": 0.9620845913862716,
+    "memory_bank_size": 27034,
+    "backbone": "resnet18",
+    "coreset_fraction": 0.1
+  },
+  "track_b_unet": {
+    "threshold": 0.7,
+    "test_dice": 0.4213,
+    "test_iou": 0.2785,
+    "clean_fp_pixel_rate": 0.0,
+    "n_defective": 9,
+    "n_clean": 2,
+    "best_val_dice": 0.6329,
+    "split_counts": {
+      "train": 45,
+      "val": 11,
+      "test": 11
+    },
+    "protocol": "NONSTANDARD supervised split of MVTec test defects; NOT the official unsupervised benchmark. Whole-image disjoint splits."
+  }
+}

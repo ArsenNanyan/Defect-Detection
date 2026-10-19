@@ -119,7 +119,7 @@ def _write_report(cfg: dict, a: dict | None, b: dict | None) -> None:
             "AUROC is threshold-free so nothing is tuned on test.",
             "",
             f"- **Image AUROC: {a['image_auroc']:.4f}**",
-            f"- **Pixel AUROC: {a.get('pixel_auroc', 'n/a')}**",
+            f"- **Pixel AUROC: {round(a['pixel_auroc'], 4) if 'pixel_auroc' in a else 'n/a'}**",
             "",
         ]
     if b:

@@ -27,3 +27,6 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
+# MVTec-derived figures embed MVTec images (CC BY-NC-SA, non-redistributable)
+artifacts/reports/figures/segmentation/
