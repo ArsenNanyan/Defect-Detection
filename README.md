@@ -100,6 +100,29 @@ Then open http://localhost:8501. The UI calls the API's `/predict`; set
 
 ![Streamlit demo](artifacts/reports/figures/demo/streamlit_ui.jpg)
 
+### Segmentation (Step 6) — MVTec AD setup
+
+MVTec AD is **CC BY-NC-SA 4.0 (non-commercial)** and must be downloaded manually (it is
+not redistributed here and stays gitignored):
+
+1. Go to https://www.mvtec.com/company/research/datasets/mvtec-ad and accept the license.
+2. Download **one category** (e.g. `grid`) — or the full `mvtec_anomaly_detection.tar.xz`.
+3. Extract so the layout is:
+   ```
+   data/mvtec/grid/train/good/*.png
+   data/mvtec/grid/test/<defect>/*.png
+   data/mvtec/grid/ground_truth/<defect>/*_mask.png
+   ```
+4. Run both tracks (PYTHONPATH=src):
+   ```bash
+   python scripts/run_seg.py --config configs/segmentation.yaml
+   # PatchCore only:  python scripts/run_seg.py --skip-unet
+   ```
+
+- **Track A (PatchCore)** — benchmark-compatible, normal-only; reports image/pixel AUROC.
+- **Track B (U-Net)** — *explicitly NONSTANDARD* supervised split of the test defects;
+  reports Dice/IoU + clean false-positive rate. Never ranked against NEU-DET.
+
 ## Hardware used
 
 - GPU: NVIDIA GeForce RTX 3050 6 GB Laptop GPU
@@ -114,7 +137,7 @@ Then open http://localhost:8501. The UI calls the API's `/predict`; set
 | 3. Feature maps / receptive field lab | ✅ done — CNN RF 18px vs ResNet 435px, see [FEATURE_MAP_REPORT](artifacts/reports/FEATURE_MAP_REPORT.md) |
 | 4. VOC→YOLO conversion | ✅ done (4,189 boxes, 0 rejected, same frozen split) |
 | 5. YOLO26n detection | ✅ done — test mAP@0.5 0.782, see [DETECTION_REPORT](artifacts/reports/DETECTION_REPORT.md) |
-| 6. MVTec segmentation / anomaly | ⬜ |
+| 6. MVTec segmentation / anomaly | 🔨 code ready (PatchCore + U-Net), awaiting MVTec download |
 | 7. Evaluation + model selection | ✅ done — test macro-F1 0.986 (cls) / mAP50 0.782 (det), see [EVALUATION_REPORT](artifacts/reports/EVALUATION_REPORT.md) |
 | 8. ONNX export + parity | ✅ done — exact parity, 8× CPU speedup, see [ONNX_REPORT](artifacts/reports/ONNX_REPORT.md) |
 | 9. FastAPI service | ✅ done — /health, /models, /predict (cls+det), 7 tests pass |

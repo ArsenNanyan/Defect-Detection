@@ -2,18 +2,24 @@
 # NOTE: MVTec AD is CC BY-NC-SA 4.0 (non-commercial). Do NOT bundle images in the repo.
 seed: 42
 mvtec_root: data/mvtec
-category: grid        # pick one category with normal-only training data
+category: grid            # one category with normal-only training data
+image_size: 256
 
-# Track A (benchmark-compatible, recommended): normal-only anomaly localization
-anomaly:
-  method: patchcore   # placeholder; implemented in Step 6
-  image_size: 256
+# Track A (benchmark-compatible, recommended): normal-only anomaly localization (PatchCore)
+patchcore:
+  backbone: resnet18       # torchvision, ImageNet features (layer2 + layer3)
+  coreset_fraction: 0.1    # memory-bank subsample fraction (random, documented)
+  n_neighbors: 1           # kNN for patch anomaly score
+  blur_sigma: 4.0          # Gaussian smoothing of the anomaly map
 
-# Track B (educational U-Net, explicitly NONSTANDARD supervised split)
+# Track B (educational U-Net, explicitly NONSTANDARD supervised split of defect images)
 unet:
-  image_size: 256
+  base_channels: 32
   batch_size: 8
-  epochs: 50
+  epochs: 40
   lr: 1.0e-3
   bce_weight: 1.0
   dice_weight: 1.0
+  val_frac: 0.15
+  test_frac: 0.15
+  include_good_frac: 0.5   # fraction of good images (all-zero masks) added to each split
