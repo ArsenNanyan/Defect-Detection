@@ -1,0 +1,234 @@
+{
+  "classification": {
+    "n_test": 278,
+    "n_failures": 4,
+    "cases": [
+      {
+        "image": "train/images/scratches/scratches_46.jpg",
+        "true": "scratches",
+        "pred": "inclusion"
+      },
+      {
+        "image": "train/images/scratches/scratches_70.jpg",
+        "true": "scratches",
+        "pred": "inclusion"
+      },
+      {
+        "image": "train/images/scratches/scratches_90.jpg",
+        "true": "scratches",
+        "pred": "inclusion"
+      },
+      {
+        "image": "train/images/scratches/scratches_93.jpg",
+        "true": "scratches",
+        "pred": "inclusion"
+      }
+    ]
+  },
+  "detection": {
+    "n_test": 278,
+    "n_images_with_failure": 121,
+    "cases": [
+      {
+        "image": "images\\test\\inclusion_130.jpg",
+        "fp": 2,
+        "miss": 5
+      },
+      {
+        "image": "images\\test\\inclusion_62.jpg",
+        "fp": 2,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\crazing_251.jpg",
+        "fp": 1,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\inclusion_13.jpg",
+        "fp": 1,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\crazing_130.jpg",
+        "fp": 0,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\crazing_155.jpg",
+        "fp": 1,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\crazing_16.jpg",
+        "fp": 2,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_30.jpg",
+        "fp": 0,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\crazing_7.jpg",
+        "fp": 1,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\inclusion_177.jpg",
+        "fp": 1,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\inclusion_181.jpg",
+        "fp": 2,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\pitted_surface_236.jpg",
+        "fp": 0,
+        "miss": 3
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_125.jpg",
+        "fp": 1,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\scratches_125.jpg",
+        "fp": 3,
+        "miss": 0
+      },
+      {
+        "image": "images\\test\\crazing_106.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\crazing_166.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_181.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_211.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\crazing_219.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_273.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_44.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\crazing_51.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\inclusion_115.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\inclusion_16.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\inclusion_178.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\inclusion_276.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\inclusion_63.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\inclusion_81.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\patches_221.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\patches_228.jpg",
+        "fp": 2,
+        "miss": 0
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_107.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_188.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_214.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_217.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_279.jpg",
+        "fp": 0,
+        "miss": 2
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_48.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\rolled-in_scale_7.jpg",
+        "fp": 1,
+        "miss": 1
+      },
+      {
+        "image": "images\\test\\scratches_126.jpg",
+        "fp": 2,
+        "miss": 0
+      },
+      {
+        "image": "images\\test\\scratches_227.jpg",
+        "fp": 2,
+        "miss": 0
+      },
+      {
+        "image": "images\\test\\scratches_282.jpg",
+        "fp": 2,
+        "miss": 0
+      }
+    ]
+  }
+}

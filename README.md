@@ -4,7 +4,41 @@ End-to-end, experiment-driven portfolio project for **steel surface defect inspe
 image classification, object detection, segmentation/anomaly localization, ONNX
 deployment, a FastAPI inference service, and a Streamlit demo.
 
-> Status: **in progress** — see the milestone table below.
+> Status: **complete** — all 10 milestones done (see table at the bottom). Core pipeline
+> runs end-to-end on an RTX 3050 6 GB laptop.
+
+## Results at a glance
+
+| Task | Model | Headline test metric | Size (ONNX) | CPU latency (p50) |
+|---|---|---|---|---|
+| Classification | EfficientNet-B0 | macro-F1 **0.986**, AUROC 0.9995 | 16 MB | 4.7 ms |
+| Detection | YOLO26n | mAP@0.5 **0.782**, mAP@0.5:0.95 0.449 | 9.8 MB | 17 ms (e2e) |
+| Anomaly (MVTec grid) | PatchCore | image AUROC **0.927**, pixel AUROC 0.962 | — | — |
+| Segmentation (MVTec grid) | U-Net *(nonstandard)* | Dice 0.421, clean-FP 0.0 | — | — |
+
+ONNX on CPU is **8× / 3.2×** faster than CPU PyTorch (classifier / detector). All metrics
+are on frozen, leakage-audited test splits; NEU-DET and MVTec are never ranked against
+each other. **Key finding:** *crazing* is the easiest class to classify (F1 1.0) yet the
+hardest to localize (AP 0.54) — classification answers *what*, detection answers *where*.
+
+## System architecture
+
+```
+          steel image (upload)
+                 │
+        ┌────────▼─────────┐   Streamlit UI (ui/streamlit_app.py)
+        │  task + conf     │   original│annotated view, latency, metrics panel
+        └────────┬─────────┘
+                 │ HTTP multipart
+        ┌────────▼─────────┐   FastAPI (api/main.py): /health /models /predict
+        │  inference layer │   OnnxClassifier + OnnxDetector (src/inspection/inference.py)
+        └───┬─────────┬────┘
+            │         │
+   classifier.onnx  detector.onnx       (exported + parity-checked, Step 8)
+   EfficientNet-B0  YOLO26n
+```
+Segmentation/anomaly (MVTec) runs offline via `scripts/run_seg.py`, kept separate from the
+NEU-DET serving path.
 
 ## Datasets
 
@@ -37,14 +71,16 @@ Raw images are kept out of Git. Only split manifests under `data/splits/` are co
 
 ```
 configs/        classification.yaml, detection.yaml, segmentation.yaml
-data/           raw/ processed/ splits/ (only splits/*.csv committed)
-notebooks/      01_eda.ipynb
-src/inspection/ data, transforms, models, train/eval, inference, export
-scripts/        audit_data.py, make_splits.py, voc_to_yolo.py, benchmark.py
+data/           raw/ processed/ mvtec/ splits/   (only splits/*.csv committed)
+src/inspection/ data, transforms, models, train_cls/eval_cls, inference, export_onnx,
+                mvtec_data, patchcore, seg_models, train_seg
+scripts/        audit_data, repair_raw, make_splits, run_cls_sweep, voc_to_yolo,
+                train_det, benchmark, feature_lab, run_seg, failure_gallery
 api/            main.py (FastAPI)
 ui/             streamlit_app.py
-tests/          data/API/preprocess/onnx tests
-artifacts/      reports/ figures/ checkpoints/ (large files ignored)
+tests/          test_splits.py, test_api.py
+docs/model_cards/  classifier.md, detector.md, segmentation.md
+artifacts/      reports/ (committed) · figures/ · checkpoints/ (large/dataset files ignored)
 ```
 
 ## Setup
@@ -142,6 +178,33 @@ not redistributed here and stays gitignored):
 | 8. ONNX export + parity | ✅ done — exact parity, 8× CPU speedup, see [ONNX_REPORT](artifacts/reports/ONNX_REPORT.md) |
 | 9. FastAPI service | ✅ done — /health, /models, /predict (cls+det), 7 tests pass |
 | 10. Streamlit demo | ✅ done — uploader, boxes, latency, metrics panel |
+
+## Reports & model cards
+
+- **Model cards:** [classifier](docs/model_cards/classifier.md) ·
+  [detector](docs/model_cards/detector.md) · [segmentation](docs/model_cards/segmentation.md)
+- **Reports:** [DATA](artifacts/reports/DATA_REPORT.md) ·
+  [CLASSIFICATION](artifacts/reports/CLASSIFICATION_REPORT.md) ·
+  [FEATURE_MAP](artifacts/reports/FEATURE_MAP_REPORT.md) ·
+  [DETECTION](artifacts/reports/DETECTION_REPORT.md) ·
+  [SEGMENTATION](artifacts/reports/SEGMENTATION_REPORT.md) ·
+  [EVALUATION](artifacts/reports/EVALUATION_REPORT.md) ·
+  [ONNX](artifacts/reports/ONNX_REPORT.md)
+- **Qualitative failures:** `scripts/failure_gallery.py` →
+  `artifacts/reports/figures/failures/` (4/278 classification errors; 121/278 detection
+  images with a false positive or miss).
+
+## Limitations (read before any real use)
+
+- **No clean/defective screening:** NEU-DET is defect-focused, so the classifier/detector
+  cannot certify a surface as defect-free. For that, use the normal-only anomaly track.
+- **Coarse localization:** 200×200 source images; *crazing* in particular is poorly
+  localized (detector AP 0.54). False negatives (missed defects) are the costly error in
+  inspection — tune thresholds for recall before deployment.
+- **Not production-validated / not calibrated:** small academic datasets, uncalibrated
+  confidences, no OOD/abstention. Revalidate on real line data before trusting any output.
+- **Segmentation U-Net is explicitly nonstandard** (self-split MVTec test defects) and is an
+  educational baseline only; PatchCore is the benchmark-compatible number.
 
 ## License & attribution notes
 
